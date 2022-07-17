@@ -14,7 +14,6 @@ public class SessionInterceptorConfiguration implements WebMvcConfigurer {
         // 创建拦截器对象
         HandlerInterceptor interceptor = new SessionInterceptor();
 
-        // 白名单
         /*List<String> patterns = new ArrayList<String>();
         patterns.add("/bootstrap3/**");
         patterns.add("/css/**");
@@ -31,6 +30,5 @@ public class SessionInterceptorConfiguration implements WebMvcConfigurer {
 
 
         registry.addInterceptor(interceptor).addPathPatterns("/");
-        //网站配置生成器：添加一个拦截器，拦截路径为整个项目
     }
 }
