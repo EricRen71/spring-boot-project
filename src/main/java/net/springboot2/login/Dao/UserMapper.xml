@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.springboot2.login.Dao.UserMapper">
+    <resultMap id="UserMap" type="net.springboot2.login.Entity.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+    </resultMap>
+    <select id="selectUserById" resultType="net.springboot2.login.Entity.User" parameterType="int">
+        SELECT * from user u where u.id = #{id}
+    </select>
+    <select id="selectUserByUserName" resultType="net.springboot2.login.Entity.User" parameterType="String" resultMap="UserMap">
+        SELECT * from user u where u.username = #{username}
+    </select>
+    <select id="selectUserByEmail" resultType="net.springboot2.login.Entity.User" parameterType="String">
+        SELECT * from user u where u.email = #{email}
+    </select>
+    <insert id="insertUser" parameterType="net.springboot2.login.Entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into user(username, password, email)
+        values(#{username}, #{password}, #{email})
+    </insert>
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+</mapper>
